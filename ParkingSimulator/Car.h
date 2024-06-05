@@ -6,7 +6,10 @@ const double MIN_SPEED = 6;
 //speed acceleration
 const double FORWARD_ACC = 0.5;
 const double BACKWARD_ACC = -0.4;
-const double DEFAULT_DECC = 0.2;
+const double SLOW_DOWN_DECC = 0.2;
+
+const double ANGULAR_ACC = 0.05;
+const double STRAIGHTING_SPEED = 0.02;
 
 class Car
 {
@@ -14,13 +17,13 @@ public:
 	double driveForward();
 	double driveBackward();
 	double speedDown();
-	double getSpeed();
-	void rotateLeft();
+	double getSpeed() const;
 	void rotateRight();
+	void rotateLeft();
 	void straightening();
-	double getRotation();
-	double getDirection();
-	void setDirection();
+	double getRotation() const;
+	double getDirection() const;
+	void setDirection(int dir);
 
 private:
 	double speed = 0;

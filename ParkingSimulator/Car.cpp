@@ -13,32 +13,49 @@ double Car::driveBackward() {
 }
 
 double Car::speedDown() {;
-	if (speed > DEFAULT_DECC) {
-		speed -= DEFAULT_DECC;
+	if (speed > SLOW_DOWN_DECC) {
+		speed -= SLOW_DOWN_DECC;
 	}
-	else if (speed < -DEFAULT_DECC) {
-		speed += DEFAULT_DECC;
+	else if (speed < -SLOW_DOWN_DECC) {
+		speed += SLOW_DOWN_DECC;
 	}
 	else {
 		speed = 0;
 	}
 }
 
-double Car::getSpeed() {
-
+double Car::getSpeed() const {
+	return speed;
 }
-void Car::rotateLeft() {
 
-}
 void Car::rotateRight() {
-
+	rotation += ANGULAR_ACC;
 }
+
+void Car::rotateLeft() {
+	rotation -= ANGULAR_ACC;
+}
+
 void Car::straightening() {
-
+	if (rotation > STRAIGHTING_SPEED) {
+		rotation -= STRAIGHTING_SPEED;
+	}
+	else if (rotation < -STRAIGHTING_SPEED) {
+		rotation += STRAIGHTING_SPEED;
+	}
+	else {
+		rotation = 0;
+	}
 }
-double Car::getRotation() {
 
+double Car::getRotation() const {
+	return rotation;
 }
-double Car::getDirection() {
 
+double Car::getDirection() const {
+	return direction;
+}
+
+void Car::setDirection(int dir) {
+	direction = dir;
 }
