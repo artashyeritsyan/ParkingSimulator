@@ -54,6 +54,21 @@ double Car::getSpeed() const {
 	return speed;
 }
 
+void Car::directionBoundCheck() {
+	if (dir.y > 1) {
+		dir.y = 1;
+	}
+	else if (dir.y < -1) {
+		dir.y = -1;
+	}
+	if (dir.x > 1) {
+		dir.x = 1;
+	}
+	else if (dir.x < -1) {
+		dir.x = -1;
+	}
+}
+
 void Car::wheelsRight()
 {
 	if (dir.y >= 0) {
@@ -69,6 +84,8 @@ void Car::wheelsRight()
 	else {
 		dir.y += wheelsRotation * 0.008;
 	}
+
+	directionBoundCheck();
 }
 
 void Car::wheelsLeft()
@@ -86,7 +103,10 @@ void Car::wheelsLeft()
 	else {
 		dir.y -= abs(wheelsRotation) * 0.008;
 	}
+
+	directionBoundCheck();
 }
+
 
 void Car::rotateRight() {
 	if (wheelsRotation < MAX_WHEEL_ROT) {

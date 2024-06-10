@@ -28,13 +28,14 @@ public:
 private:
 	void wheelsRight();
 	void wheelsLeft();
+	void directionBoundCheck();
 
 private:
 	double speed = 0;
 	double rotation = 0;
 	double wheelsRotation = 0;
-	Position pos = { 10, 10 };
-	Position dir = { 1, 0 };
+	Position pos = { 20, 20 };
+	Position dir = { 0, 1 };
 
 };
 
